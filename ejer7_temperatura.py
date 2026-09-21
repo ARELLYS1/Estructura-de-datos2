@@ -37,3 +37,47 @@ gt.registrar_multiples(20, 25, 18, 30)
 print("Temperatura mínima:", gt.minima())
 print("Temperatura máxima:", gt.maxima())
 print("Promedio:", gt.promedio())
+
+
+
+
+
+#EJERCICIO#7.1
+#GESTOR DE PRECIOS
+# Crear una clase GestorPrecios.
+# registrar_precio(precio) guarda los precios en una lista.
+# menor() devuelve el precio más bajo.
+# mayor() devuelve el precio más alto.
+# promedio() calcula el precio promedio.
+# registrar_multiples(*precios) permite registrar varios precios reutilizando registrar_precio().
+
+class GestorPrecios:
+
+    def __init__(self):
+        self.precios = []
+
+    def registrar_precio(self, precio):
+        self.precios.append(precio)
+
+    def menor(self):
+        return min(self.precios)
+
+    def mayor(self):
+        return max(self.precios)
+
+    def promedio(self):
+        return sum(self.precios) / len(self.precios)
+
+    def registrar_multiples(self, *precios):
+        for precio in precios:
+            self.registrar_precio(precio)
+
+
+gp = GestorPrecios()
+
+gp.registrar_multiples(10, 25, 15, 30)
+
+print("Precio menor:", gp.menor())
+print("Precio mayor:", gp.mayor())
+print("Promedio:", gp.promedio())
+
