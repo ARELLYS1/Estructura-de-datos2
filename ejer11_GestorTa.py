@@ -128,3 +128,4 @@ inventario.eliminar_producto("Mouse")
 
 print("\nDespués de eliminar Mouse:")
 inventario.mostrar_inventario()
+
