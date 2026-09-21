@@ -45,3 +45,65 @@ cl = CombinadorListas()
 print(cl.intercalar([1, 2], [3, 4]))
 
 print(cl.intercalar_multiples([1, 2], [3, 4], [5, 6]))
+
+
+
+
+
+# EJERCICIO 14.1
+
+# MEZCLADOR DE LISTAS
+
+# Clase MezcladorListas que:
+# (1) tenga método unir_listas(lista1, lista2)
+# que retorne una lista con los elementos de ambas listas;
+# (2) tenga método unir_multiples(*listas)
+# que reciba varias listas y las una en una sola;
+# (3) tenga método eliminar_repetidos(lista)
+# que retorne una lista sin elementos duplicados.
+
+# MEZCLADOR DE LISTAS
+
+class MezcladorListas:
+
+    def unir_listas(self, lista1, lista2):
+        return lista1 + lista2
+
+    def unir_multiples(self, *listas):
+        resultado = []
+
+        for lista in listas:
+            resultado.extend(lista)
+
+        return resultado
+
+    def eliminar_repetidos(self, lista):
+        resultado = []
+
+        for elemento in lista:
+            if elemento not in resultado:
+                resultado.append(elemento)
+
+        return resultado
+
+
+# Crear objeto
+mezclador = MezcladorListas()
+
+lista1 = [1, 2, 3]
+lista2 = [3, 4, 5]
+
+
+print("Dos listas:", mezclador.unir_listas(lista1, lista2))
+
+print("Varias listas:", mezclador.unir_multiples(
+    [1, 2],
+    [3, 4],
+    [5, 6]
+))
+
+
+print("Sin repetidos:", mezclador.eliminar_repetidos(
+    [1, 2, 2, 3, 3, 4]
+))
+
