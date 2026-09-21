@@ -48,3 +48,49 @@ e.agregar_jugador("Emelec", "Miguel")
 
 
 print(e.equipo_mayor_integrantes())
+
+
+
+#EJERCICIO9.1
+#ASIGNADOR DE CURSOS
+# Tenga un método crear_curso(nombre_curso) que cree un curso vacío dentro de un diccionario.
+# Tenga un método agregar_estudiante(curso, estudiante) que agregue un estudiante al curso.
+# Tenga un método curso_mayor_estudiantes() que retorne el nombre del curso que tenga más estudiantes.
+
+
+class Cursos:
+
+    def __init__(self):
+        self.cursos = {}
+
+    def crear_curso(self, nombre_curso):
+        self.cursos[nombre_curso] = []
+
+    def agregar_estudiante(self, curso, estudiante):
+        self.cursos[curso].append(estudiante)
+
+    def curso_mayor_estudiantes(self):
+        mayor = ""
+        cantidad = 0
+
+        for curso, estudiantes in self.cursos.items():
+            if len(estudiantes) > cantidad:
+                cantidad = len(estudiantes)
+                mayor = curso
+
+        return mayor
+
+
+c = Cursos()
+
+c.crear_curso("Programacion")
+c.crear_curso("Matematicas")
+
+c.agregar_estudiante("Programacion", "Ana")
+c.agregar_estudiante("Programacion", "Pedro")
+c.agregar_estudiante("Programacion", "Luis")
+
+c.agregar_estudiante("Matematicas", "Maria")
+c.agregar_estudiante("Matematicas", "Carlos")
+
+print(c.curso_mayor_estudiantes())
