@@ -87,3 +87,51 @@ print("Nombres después de agregar múltiples:", registro.lista)
 
 
 print("Cantidad de nombres únicos:", registro.contar_nombres())
+
+
+
+
+
+
+# EJERCICIO#4.1
+# GESTOR DE PRODUCTOS
+
+class GestorProductos:
+
+    def __init__(self):
+        self.productos = {}
+
+    def agregar_producto(self, nombre, cantidad):
+        self.productos[nombre] = cantidad
+
+    def total_productos(self):
+        return sum(self.productos.values())
+
+    def productos_por_rango(self, cantidad_min, cantidad_max):
+        resultado = []
+
+        for nombre, cantidad in self.productos.items():
+            if cantidad >= cantidad_min and cantidad <= cantidad_max:
+                resultado.append(nombre)
+
+        return resultado
+
+
+
+gestor = GestorProductos()
+
+
+
+gestor.agregar_producto("cuadernos", 10)
+gestor.agregar_producto("lapices", 25)
+gestor.agregar_producto("borradores", 5)
+gestor.agregar_producto("marcadores", 15)
+
+print("Productos registrados:", gestor.productos)
+
+
+
+print("Total de productos:", gestor.total_productos())
+
+
+print("Productos en rango de 10 a 20:", gestor.productos_por_rango(10, 20))
