@@ -45,3 +45,61 @@ rn.registrar("Carlos", 85)
 
 print(rn.estudiantes_aprobados(70))
 print(rn.mejor_estudiante())
+
+
+
+
+
+# EJERCICIO 15.1
+# REGISTRO DE PRODUCTOS Y PRECIOS
+
+# Clase RegistroProductos que:
+# (1) tenga método registrar(producto, precio)
+# que guarde el producto y su precio en un diccionario;
+# (2) tenga método productos_baratos(precio_maximo)
+# que retorne una lista de productos cuyo precio sea
+# menor o igual al precio máximo;
+# (3) tenga método producto_mas_caro()
+# que retorne el nombre y precio del producto
+# que tenga el mayor valor.
+
+
+
+# REGISTRO DE PRODUCTOS Y PRECIOS
+
+class RegistroProductos:
+
+    def __init__(self):
+        self.productos = {}
+
+    def registrar(self, producto, precio):
+        self.productos[producto] = precio
+
+    def productos_baratos(self, precio_maximo):
+        baratos = []
+
+        for producto, precio in self.productos.items():
+            if precio <= precio_maximo:
+                baratos.append(producto)
+
+        return baratos
+
+    def producto_mas_caro(self):
+        producto = max(self.productos, key=self.productos.get)
+        return producto, self.productos[producto]
+
+
+# Crear objeto
+registro = RegistroProductos()
+
+
+registro.registrar("Laptop", 800)
+registro.registrar("Mouse", 25)
+registro.registrar("Teclado", 50)
+registro.registrar("Monitor", 300)
+
+
+print("Productos baratos:", registro.productos_baratos(100))
+print("Producto más caro:", registro.producto_mas_caro())
+
+
