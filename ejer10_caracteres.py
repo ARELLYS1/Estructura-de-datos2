@@ -46,3 +46,53 @@ print(astr.contar_por_tipo("Hola123"))
 
 
 print("Texto más largo:", astr.texto_mas_largo)
+
+
+
+
+#EJERCICIO 10.1
+#ANALIZADOR DE PALABRAS
+# Crear una clase AnalizadorPalabras 
+#Tenga un atributo que guarde la palabra más larga analizada.
+# Tenga un método es_mayuscula(letra) que retorne True si la letra está en mayúscula.
+# Tenga un método analizar_texto(texto) que retorne un diccionario:
+
+class AnalizadorPalabras:
+
+    def __init__(self):
+        self.palabra_mas_larga = ""
+
+    def es_mayuscula(self, letra):
+        return letra.isupper()
+
+    def analizar_texto(self, texto):
+        mayusculas = 0
+        minusculas = 0
+        espacios = 0
+
+        palabras = texto.split()
+
+        for palabra in palabras:
+            if len(palabra) > len(self.palabra_mas_larga):
+                self.palabra_mas_larga = palabra
+
+        for letra in texto:
+            if self.es_mayuscula(letra):
+                mayusculas += 1
+            elif letra.islower():
+                minusculas += 1
+            elif letra == " ":
+                espacios += 1
+
+        return {
+            "mayusculas": mayusculas,
+            "minusculas": minusculas,
+            "espacios": espacios
+        }
+
+
+ap = AnalizadorPalabras()
+
+print(ap.analizar_texto("Hola Mundo Python"))
+
+print("Palabra más larga:", ap.palabra_mas_larga)
