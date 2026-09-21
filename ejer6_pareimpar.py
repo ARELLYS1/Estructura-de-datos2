@@ -41,3 +41,41 @@ print(an.separar(1, 2, 3, 4, 5))
 
 
 print(an.cantidad_pares_impares())
+
+
+
+class AnalizadorNotas:
+
+    def __init__(self):
+        self.aprobadas = []
+        self.reprobadas = []
+
+    def es_aprobado(self, nota):
+        return nota >= 70
+
+    def clasificar(self, *notas):
+        self.aprobadas = []
+        self.reprobadas = []
+
+        for nota in notas:
+            if self.es_aprobado(nota):
+                self.aprobadas.append(nota)
+            else:
+                self.reprobadas.append(nota)
+
+        return {
+            "aprobadas": self.aprobadas,
+            "reprobadas": self.reprobadas
+        }
+
+    def cantidad_aprobadas_reprobadas(self):
+        return (len(self.aprobadas), len(self.reprobadas))
+
+an = AnalizadorNotas()
+
+print("¿85 está aprobado?", an.es_aprobado(85))
+print("¿60 está aprobado?", an.es_aprobado(60))
+
+print("Clasificación:", an.clasificar(85, 60, 90, 45, 70, 55))
+
+print("Cantidad de aprobadas y reprobadas:", an.cantidad_aprobadas_reprobadas())
