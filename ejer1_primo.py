@@ -146,3 +146,5 @@ print(NumeroPerfecto.numeros_perfectos)
 
 print(NumeroPerfecto.get_perfectos_verificados())
 
+
+
